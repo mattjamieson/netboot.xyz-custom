@@ -19,7 +19,7 @@ goto custom_exit
 
 :option_one
 kernel http://xcg.ngrok.io/boot/xen.gz dom0_max_vcpus=1-2 dom0_mem=max:752M com1=115200,8n1 console=com1,vga
-module http://xcg.ngrok.io/boot/vmlinux xencons=hvc console=hvc0 console=tty0
+module http://xcg.ngrok.io/boot/vmlinuz xencons=hvc console=hvc0 console=tty0
 module http://xcg.ngrok.io/install.img
 boot
 boot || goto custom_exit

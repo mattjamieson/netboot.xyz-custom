@@ -7,6 +7,7 @@
 clear custom_choice
 menu XCG-NG netinstall
 item install ${space} install
+item install2g ${space} install (max 2G)
 item install_alt ${space} install-alt
 item safe ${space} safe
 choose custom_choice || goto custom_exit
@@ -16,6 +17,12 @@ goto custom_exit
 
 :install
 kernel http://xcg.ngrok.io/boot/xen.gz dom0_max_vcpus=1-16 dom0_mem=max:8192M com1=115200,8n1 console=com1,vga
+module http://xcg.ngrok.io/boot/vmlinuz xencons=hvc console=hvc0 console=tty0
+module http://xcg.ngrok.io/install.img
+boot || goto custom_exit
+
+:install2g
+kernel http://xcg.ngrok.io/boot/xen.gz dom0_max_vcpus=1-16 dom0_mem=max:2048M com1=115200,8n1 console=com1,vga
 module http://xcg.ngrok.io/boot/vmlinuz xencons=hvc console=hvc0 console=tty0
 module http://xcg.ngrok.io/install.img
 boot || goto custom_exit
